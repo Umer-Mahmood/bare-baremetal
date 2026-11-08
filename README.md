@@ -28,26 +28,48 @@ and finally into **bytes in flash memory** that run on the Cortex-M4.
 
 ---
 
+## Who this is for
+
+Developers who know C and have done some embedded work, but only through SDKs, HALs or RTOSes (nRF Connect SDK, Zephyr, ...) and never stopped to ask: *wait, how does this actually work?* Each chapter starts from a question, shows what the SDK normally hides, and proves the answer with tools (`objdump`, `readelf`, `nm`, the map file).
+
+## Chapters
+
+Each chapter follows the same shape: Goal, Questions, Findings, Do it, Gotchas, Verify, Sources.
+
+1. [Toolchain & compiler flags](docs/01-toolchain-setup.md)
+2. [First compile & inspecting the object file](docs/02-first-compile.md)
+3. [Vector table, linker script & image formats](docs/03-vector-table-and-linking.md)
+4. [Flashing and first boot](docs/04-first-boot.md)
+5. [LED on: GPIO registers](docs/05-led-on.md)
+6. [Blink: a delay without a timer](docs/06-blink.md)
+
+Target hardware: a custom nRF52840 board, programmed with a SEGGER J-Link via `nrfjprog`.
+
+---
+
 ## Project Roadmap
 
-### ✅ Phase 1: Environment Setup
-- [ ] Install GNU Arm Embedded Toolchain (`arm-none-eabi-gcc`)
-- [ ] Prepare a minimal linker script for nRF52840
+### Phase 1: Environment Setup
+- [x] Install GNU Arm toolchain (`arm-none-eabi-gcc`) and pick target flags ([ch. 1](docs/01-toolchain-setup.md))
+- [x] Compile and inspect an empty `main.c` ([ch. 2](docs/02-first-compile.md))
+- [x] Minimal linker script and vector table ([ch. 3](docs/03-vector-table-and-linking.md))
+- [x] Flash and prove first boot via CPU registers ([ch. 4](docs/04-first-boot.md))
 - [ ] Write startup code and reset handler
 - [ ] Makefile to build and generate `.elf`, `.bin`, `.hex`
 
-### ✅ Phase 2: Bare Minimum Blinky
-- [ ] Single `main.c` toggling an LED using GPIO registers (no SDK)
-- [ ] Build → flash → verify LED blinks
+### Phase 2: Bare Minimum Blinky
+- [x] LED on via GPIO registers, no SDK ([ch. 5](docs/05-led-on.md))
+- [x] Blink (delay without a timer) ([ch. 6](docs/06-blink.md))
+- [x] Build → flash → verify LED blinks
 
-### ✅ Phase 3: From C to Hex
+### Phase 3: From C to Hex
 - [ ] Write a simple C function (`add_two_numbers`)
 - [ ] Compile with `-S` to generate assembly
 - [ ] Use `objdump` to see instructions + opcodes
 - [ ] Highlight how `adds r0, r0, r1` → `0x1808` in final hex file
 - [ ] Create a visual map: C code → asm → machine code → flash memory
 
-### ✅ Phase 4: Documentation & Educational Material
+### Phase 4: Documentation & Educational Material
 - [ ] Step-by-step README with diagrams
 - [ ] Add references to ARMv7-M architecture manual and nRF52840 datasheet
 - [ ] Provide hex dumps with annotated bytes

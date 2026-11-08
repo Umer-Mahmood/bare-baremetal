@@ -30,9 +30,13 @@ int main(){
     while(1){
         //*out_reg &= ~(1 << LED_PIN); // set it to low
         *out_reg ^= (1 << LED_PIN);
-        // run 64M cycles to get 1 sec delay
+        // Busy-wait delay: no timer is set up, so the CPU just burns cycles.
+        // The core runs at 64 MHz after reset and each iteration takes several
+        // cycles, so 1M iterations is a rough, uncalibrated delay (tune by eye).
         for (int i = 0; i < 1000000; i++)
         {
+            // Read of a volatile register: the compiler must keep this access,
+            // so the otherwise empty loop is not optimised away at -O1.
             volatile int val = *out_reg;
         }
     }

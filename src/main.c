@@ -3,12 +3,19 @@ typedef struct{
     int reset_handler;
 }vector_table;
 
+/* Known limitations of this table:
+ * - Only 2 of the core's vector entries exist. The word at 0x8 (NMI) and 0xC
+ *   (HardFault) are not defined here, so a fault would fetch garbage.
+ * - reset_handler is hard-coded as 0x9 (0x8 + Thumb bit). It only works while
+ *   main() is the first code at 0x8; it should reference the function by name.
+ * - Fields are plain ints, not uint32_t / function pointers.
+ */
 __attribute__((
     section (".vector_table"),
     used))
 vector_table table  ={
     .initial_sp = (0x20000000 + 256*1024), //0x20040000, end address of RAM
-    .reset_handler = 0x00000009
+    .reset_handler = 0x00000009 // main() at 0x8, bit 0 = 1 for Thumb
 };
 
 #define GPIO_BASE_ADDRESS_P0 0x50000000

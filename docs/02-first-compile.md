@@ -78,7 +78,10 @@ What this shows:
 
 ## Sources
 
-- GCC ARM Options; Cortex-M4 Generic User Guide (instruction set chapter); ARMv7-M ARM (DDI0403); AAPCS (Arm Procedure Call Standard).
+- [GCC ARM Options](https://gcc.gnu.org/onlinedocs/gcc-7.1.0/gcc/ARM-Options.html)
+- [Cortex-M4 Generic User Guide (DUI0553)](https://support.arm.com/documentation/dui0553/b), section 3.1 *Instruction set summary* (e.g. the DSP instructions `QADD8`, `QADD16`)
+- [ARMv7-M Architecture Reference Manual (DDI0403)](https://developer.arm.com/documentation/ddi0403)
+- AAPCS (Arm Procedure Call Standard): where `int` return values go (`r0`) and how return works (`bx lr`)
 
 ## Open question (next chapter)
 

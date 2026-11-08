@@ -108,7 +108,11 @@ Intel hex records:
 
 ## Sources
 
-- Cortex-M4 Generic User Guide (exception model, `BX`, EPSR); nRF52840 PS v1.11 (memory); GNU ld manual; GCC variable attributes; Intel HEX record format.
+- [Cortex-M4 Generic User Guide (DUI0553)](https://support.arm.com/documentation/dui0553/b): 2.3.4 *Vector table*; 2.1.3 *Core registers* (Program Status Register, T bit); the `BX` instruction (section 3.1 *Instruction set summary* and the branch instruction pages)
+- [nRF52840 Product Specification v1.11](https://docs.nordicsemi.com/r/bundle/ps_nrf52840/page/keyfeatures_html5.html): 4.2.3 *Memory map* for RAM and flash base addresses and sizes
+- [GCC Common Attributes](https://gcc.gnu.org/onlinedocs/gcc/Common-Attributes.html): `section`, `used`
+- [GNU ld manual](https://sourceware.org/binutils/docs/ld/): `SECTIONS`, location counter, comment syntax
+- Intel HEX record format
 
 ## Next
 

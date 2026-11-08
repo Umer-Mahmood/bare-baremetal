@@ -73,7 +73,11 @@ That pair is exactly what the **first version** of the code (set `OUT` only, nev
 
 ## Sources
 
-- nRF52840 PS v1.11 (GPIO chapter and register table); board schematic.
+- [nRF52840 Product Specification v1.11](https://docs.nordicsemi.com/r/bundle/ps_nrf52840/page/keyfeatures_html5.html):
+  - 6.9 *GPIO – General purpose input/output*
+  - 6.9.2 *Registers*, table "Instances": GPIO port base addresses
+  - 6.9.2.1 *OUT* and 6.9.2.5 *DIR*
+- Board schematic (LED polarity)
 
 ## Next
 

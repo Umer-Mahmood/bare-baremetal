@@ -62,9 +62,9 @@ Add the MSYS2 environment's `bin` directory (e.g. `C:\msys64\mingw64\bin`) to th
 
 ## Sources
 
-- nRF52840 Product Specification v1.11 (`docs/nRF52840_PS_v1.11.pdf`)
-- Arm Cortex-M4 Devices Generic User Guide DUI0553 (`docs/`)
-- GCC ARM Options (link above)
+- [nRF52840 Product Specification v1.11](https://docs.nordicsemi.com/r/bundle/ps_nrf52840/page/keyfeatures_html5.html) (for the PDF: open the page, go to *Attachments*, download `nRF52840_PS_v1.11.pdf`). Cortex-M4 core and FPU details.
+- [Arm Cortex-M4 Devices Generic User Guide (DUI0553)](https://support.arm.com/documentation/dui0553/b)
+- [GCC ARM Options](https://gcc.gnu.org/onlinedocs/gcc-7.1.0/gcc/ARM-Options.html): `-mcpu`, `-mthumb`, `-mfpu`, `-mfloat-abi`
 
 ## Next
 

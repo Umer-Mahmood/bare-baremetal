@@ -63,7 +63,9 @@ Flash writes can only clear bits (1 → 0). Setting bits back to 1 needs an eras
 
 ## Sources
 
-- Cortex-M4 Generic User Guide (registers, exception model, reset values); nRF52840 PS v1.11 (NVMC); `nrfjprog --help`.
+- [Cortex-M4 Generic User Guide (DUI0553)](https://support.arm.com/documentation/dui0553/b): 2.1.3 *Core registers* (reset values, Program Status Register and the T bit); 2.3.4 *Vector table* (NMI at `0x8`, HardFault at `0xC`)
+- [nRF52840 Product Specification v1.11](https://docs.nordicsemi.com/r/bundle/ps_nrf52840/page/keyfeatures_html5.html): the NVMC chapter (flash write and erase)
+- `nrfjprog --help`
 
 ## Next
 

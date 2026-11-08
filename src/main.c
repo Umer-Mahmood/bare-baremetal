@@ -3,7 +3,6 @@ typedef struct{
     int reset_handler;
 }vector_table;
 
-
 __attribute__((
     section (".vector_table"),
     used))
@@ -28,7 +27,6 @@ int main(){
 
     volatile unsigned int *out_reg = (volatile unsigned int *)P0_OUT_REG;
 
-
     while(1){
         //*out_reg &= ~(1 << LED_PIN); // set it to low
         *out_reg ^= (1 << LED_PIN);
@@ -37,8 +35,5 @@ int main(){
         {
             volatile int val = *out_reg;
         }
-
-
-
     }
 }

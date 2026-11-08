@@ -77,17 +77,39 @@ Target hardware: a custom nRF52840 board, programmed with a SEGGER J-Link via `n
 ---
 
 ## Tools Used
-- **Compiler**: GNU Arm Embedded Toolchain (`arm-none-eabi-gcc`)
-- **Flashing**: OpenOCD / pyOCD / nrfjprog (if you have a DK)
-- **Disassembly**: `arm-none-eabi-objdump -d`
-- **Hex Inspection**: `xxd`, `hexdump`, or any hex editor
+- **Compiler**: GNU Arm toolchain (`arm-none-eabi-gcc`), installed on Windows through MSYS2 (`pacman`)
+- **Binutils**: `arm-none-eabi-ld` (linker), `objcopy` (ELF to `.bin`/`.hex`), `objdump` and `readelf` (inspection)
+- **Programmer**: SEGGER J-Link, driven by `nrfjprog` (Nordic nRF Command Line Tools)
+- **Hex inspection**: `xxd`
+- **Build**: [`tools/build-and-flash.sh`](tools/build-and-flash.sh) for now (a Makefile is planned). Its `nrfjprog --eraseall` wipes whatever chip is connected.
+
+Target: a custom nRF52840 board. The LED pin (P0.11) and its polarity (active low) are specific to that board, so adapt `LED_PIN` and the output level to yours.
 
 ---
 
 ## References
+
+Documents used, with the sections each chapter relies on. The PDFs are not stored in this repo; download them from the official sites.
+
+**nRF52840 Product Specification v1.11** ([online](https://docs.nordicsemi.com/r/bundle/ps_nrf52840/page/keyfeatures_html5.html); for the PDF, open the page, go to *Attachments* and download `nRF52840_PS_v1.11.pdf`)
+- 4.2.3 *Memory map*: RAM and flash base addresses and sizes
+- 6.9 *GPIO – General purpose input/output*
+  - 6.9.2 *Registers*, table "Instances": GPIO port base addresses
+  - 6.9.2.1 *OUT* and 6.9.2.5 *DIR*: the registers used to drive the LED
+
+**Arm Cortex-M4 Devices Generic User Guide (DUI0553)** ([download](https://support.arm.com/documentation/dui0553/b))
+- 2.1.3 *Core registers*: especially the Program Status Register and the T bit
+- 2.3.4 *Vector table*: layout of the table the core reads at reset
+- 3.1 *Instruction set summary*
+
+**GCC documentation**
+- [ARM Options](https://gcc.gnu.org/onlinedocs/gcc-7.1.0/gcc/ARM-Options.html): compiler flags for the target (`-mcpu`, `-mthumb`, `-mfpu`, `-mfloat-abi`)
+- [Common Attributes](https://gcc.gnu.org/onlinedocs/gcc/Common-Attributes.html): `section`, `used`
+
+**Other**
 - [ARMv7-M Architecture Reference Manual](https://developer.arm.com/documentation/ddi0403)
-- [Nordic nRF52840 Product Specification](https://infocenter.nordicsemi.com/pdf/nRF52840_PS_v1.1.pdf)
-- [GNU Arm Embedded Toolchain](https://developer.arm.com/downloads/-/gnu-rm)
+- [GNU ld manual](https://sourceware.org/binutils/docs/ld/)
+- [Arm GNU Toolchain downloads](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads)
 
 ---
 
